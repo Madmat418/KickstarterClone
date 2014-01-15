@@ -1,0 +1,4 @@
+Welcome to Matthew's Kickstarter Clone.  The features of this site included are:
+  -Standard Authorization: User Creation and log in/log out functionality
+  -Backbone, single page browsing: once logged in the page will only be rerendered via Backbone instead of reloading each page
+  -The User model: aside from log in, will track what projects
