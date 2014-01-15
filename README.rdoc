@@ -1,4 +1,5 @@
 Welcome to Matthew's Kickstarter Clone.  The features of this site included are:
   -Standard Authorization: User Creation and log in/log out functionality
   -Backbone, single page browsing: once logged in the page will only be rerendered via Backbone instead of reloading each page
-  -The User model: aside from log in, will track what projects
+  -The User model: aside from log in, will track what projects a user has posted, what projects they are following, and what projects they have supported. Users will also be able to post their own projects and message other users.
+  -The Project model: Will track the support goal, the owner of the project, progress towards the goal, who is following a project, and who is supporting the project.  Also needs two templates, one for the smaller page preview a user can see while browsing throug the main site, and then the main project site, whihc will include the various support levels
