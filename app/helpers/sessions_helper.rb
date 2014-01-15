@@ -1,5 +1,6 @@
 module SessionsHelper
-  def current_user=(user)
+  def log_in(user)
+    puts 'here I am'
     session[:token] = user.reset_session_token!
   end
 

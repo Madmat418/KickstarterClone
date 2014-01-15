@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :password, :username
   attr_accessor :password
 
-  after_initialize assign_session_token
+  after_initialize :assign_session_token
 
   validates :username, :password_digest, :presence => true
   validates :password, :length => {minimum: 6}, :on => :create

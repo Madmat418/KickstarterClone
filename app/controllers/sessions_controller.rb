@@ -6,11 +6,13 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_credentials(params[:user])
     if @user
-      current_user = @user
+      reset_session
+      log_in(@user)
       redirect_to users_url
     else
       flash.now[:message] = "Invalid username and password combination"
       render :new
+    end
   end
 
   def destroy
