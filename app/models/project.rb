@@ -14,7 +14,7 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :description, :goal, :name, :owner_id
+  attr_accessible :description, :goal, :name, :owner_id, :end_time
   after_initialize :start_funding
 
   validates :description, :goal, :name, :owner_id,

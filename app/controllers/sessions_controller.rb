@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user
       reset_session
       log_in(@user)
-      redirect_to users_url
+      redirect_to projects_url
     else
       flash.now[:message] = "Invalid username and password combination"
       render :new

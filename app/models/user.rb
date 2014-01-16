@@ -44,6 +44,7 @@ class User < ActiveRecord::Base
 
   def self.find_by_credentials(params_hash)
     user = User.find_by_username(params_hash[:username])
+    return nil if user.nil?
     user.is_password?(params_hash[:password]) ? user : nil
   end
 

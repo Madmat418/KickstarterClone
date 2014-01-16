@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in(@user)
       flash[:messages] = "User Creation Successful"
-      redirect_to users_url
+      redirect_to projects_url
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
