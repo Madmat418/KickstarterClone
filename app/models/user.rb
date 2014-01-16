@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
   validates :username, :password_digest, :presence => true
   validates :password, :length => {minimum: 6}, :on => :create
 
+  has_many :supports
+  has_many :rewards, :through => :supports, :source => :reward
+  has_many :supported_projects, :through => :rewards, :source => :project
+
+  has_many :created_projects,
+           :class_name => 'Project',
+           :foreign_key => :owner_id
+
   def password=(password)
     @password = password
     self.password_digest = BCrypt::Password.create(password)

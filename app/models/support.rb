@@ -3,14 +3,16 @@
 # Table name: supports
 #
 #  id         :integer          not null, primary key
-#  project_id :integer          not null
 #  user_id    :integer          not null
-#  amount     :integer          not null
-#  reward     :text             not null
+#  reward_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 class Support < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :project_id, :user_id, :reward_id
+
+
+  belongs_to :user
+  belongs_to :reward
 end

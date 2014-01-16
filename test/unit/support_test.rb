@@ -3,10 +3,8 @@
 # Table name: supports
 #
 #  id         :integer          not null, primary key
-#  project_id :integer          not null
 #  user_id    :integer          not null
-#  amount     :integer          not null
-#  reward     :text             not null
+#  reward_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

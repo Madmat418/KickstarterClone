@@ -20,6 +20,11 @@ class Project < ActiveRecord::Base
   validates :description, :goal, :name, :owner_id,
               :current_funding, :presence => true
 
+  has_many :rewards
+  has_many :supports, :through => :rewards, :source => :supports
+  has_many :supporters, :through => :supports, :source => :user
+
+
   def start_funding
     self.current_funding = 0
   end
