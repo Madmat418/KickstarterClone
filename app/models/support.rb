@@ -10,7 +10,7 @@
 #
 
 class Support < ActiveRecord::Base
-  attr_accessible :project_id, :user_id, :reward_id
+  attr_accessible :user_id, :reward_id
 
 
   belongs_to :user
