@@ -7,9 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if session[:message] %>
+  <% if !session[:message].nil? %>
   <%= session[:message] %>
   <% end %>
+
 
   <% if session[:errors] %>
     <% session[:errors].each do |error| %>
@@ -20,8 +21,13 @@
   <%= yield %>
 
   <% if logged_in? %>
-    You are logged in as: <%= current_user.username %>
+    You are logged in as: <%= current_user.username %><br>
+    <%= link_to "Your Profile", user_url %>
     <%= button_to "Sign Out", session_url, :method => :delete %>
-  <% end%>
+  <% else %>
+  <%= link_to "Sign Up", new_user_url %>
+  <%= link_to "Sign In", new_session_url %>
+  <% end %>
+
 </body>
 </html>

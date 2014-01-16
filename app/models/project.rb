@@ -15,22 +15,25 @@
 
 class Project < ActiveRecord::Base
   attr_accessible :description, :goal, :name, :owner_id, :end_time
-  after_initialize :start_funding
 
   validates :description, :goal, :name, :owner_id,
-              :current_funding, :presence => true
+            :presence => true
 
   has_many :rewards
   has_many :supports, :through => :rewards, :source => :supports
   has_many :supporters, :through => :supports, :source => :user
 
 
-  def start_funding
-    self.current_funding = 0
+  def current_funding
+    current_funding = 0
+    return 0 if self.supports.length == 0
+    supporters = self.supports.map {|support| support.reward.support_amount}
+    supporters.each {|amount| current_funding += amount}
+    return current_funding
   end
 
-  def add_funding(amount)
-    self.current_funding += amount
+  def num_supporters
+    self.supporters.length
   end
 
   def is_successful?

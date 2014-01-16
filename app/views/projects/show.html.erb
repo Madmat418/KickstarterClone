@@ -1,11 +1,25 @@
-<%= @project.name %><br>
+<h1><%= @project.name %></h1><br>
+<h2>We are trying to reach: <%= @project.goal %></h2><br>
+<h3>We are currently at: <%= @project.current_funding %></h3>
+<h3>There are <%= @project.num_supporters %> people supporting this project.
+</h3><br>
 
-<% @rewards.each do |reward| %>
-<%= reward.support_amount %>
-<%= reward.supporter_reward %><br>
-<% end %>
+
+
 <% if current_user.id == @project.owner_id %>
+  <% @rewards.each do |reward| %>
+  <%= reward.support_amount %>
+  <%= reward.supporter_reward %><br>
+  <% end %>
   <%= link_to "Add a reward level", new_project_reward_url(@project.id) %><br>
+<% else %>
+Support Levels:
+  <% @rewards.each do |reward| %>
+  <div>
+  <%= link_to reward.support_amount, reward_supports_url(reward.id), method: :post %>
+  <%= reward.supporter_reward %><br>
+</div>
+  <% end %>
 <% end %>
 
 
