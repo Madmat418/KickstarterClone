@@ -23,4 +23,3 @@ window.Kickstarter = {
   }
 };
 
-$(Kickstarter.initialize);

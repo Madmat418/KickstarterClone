@@ -1,2 +1,15 @@
 <%= @project.name %><br>
+
+<% @rewards.each do |reward| %>
+<%= reward.support_amount %>
+<%= reward.supporter_reward %><br>
+<% end %>
+<% if current_user.id == @project.owner_id %>
+  <%= link_to "Add a reward level", new_project_reward_url(@project.id) %><br>
+<% end %>
+
+
+
+
+
 <%= link_to "Projects Index", projects_url%><br>
