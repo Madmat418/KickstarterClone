@@ -1,4 +1,4 @@
-class ProjectsController < ApplicationController
+class Api::ProjectsController < ApplicationController
   def new
     @project = Project.new
     render :new
@@ -25,6 +25,5 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
-    render :index
   end
 end

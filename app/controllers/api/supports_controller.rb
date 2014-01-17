@@ -1,4 +1,4 @@
-class SupportsController < ApplicationController
+class Api::SupportsController < ApplicationController
   def create
     support_params = {user_id: current_user.id, reward_id: params[:reward_id]}
     @support = Support.new(support_params)

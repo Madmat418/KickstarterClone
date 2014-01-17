@@ -1,4 +1,4 @@
-class RewardsController < ApplicationController
+class Api::RewardsController < ApplicationController
   def new
     render :new
   end
