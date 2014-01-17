@@ -2,6 +2,7 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
   initialize: function (projects, $rootEl) {
     this.projects = projects;
     this.$rootEl = $rootEl;
+    console.log('work, damn it')
   },
 
   routes: {
@@ -13,7 +14,7 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
 
   index: function () {
     var projectIndex = new Kickstarter.Views.ProjectIndex ( {
-      category: 'all';
+      category: 'all'
     });
 
     this._swapView(projectIndex);
@@ -21,7 +22,7 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
 
   browse: function (category) {
     var categoryIndex = new Kickstarter.Views.ProjectIndex ( {
-      category: category;
+      category: category
     });
 
     this._swapView(categoryIndex);
@@ -29,7 +30,7 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
 
   show: function (id) {
     var projectShow = new Kickstarter.Views.ProjectShow ( {
-      model: this.projects.get(id);
+      model: this.projects.get(id)
     });
 
     this._swapView(projectShow);

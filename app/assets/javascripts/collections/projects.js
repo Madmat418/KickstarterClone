@@ -1,7 +1,8 @@
 Kickstarter.Collections.Projects = Backbone.Collection.extend({
-  model: Kickstarter.Models.Project
+  model: Kickstarter.Models.Project,
 
   initialize: function (category) {
+
     if (category === 'all') {
       this.category = '';
     } else {
@@ -9,7 +10,7 @@ Kickstarter.Collections.Projects = Backbone.Collection.extend({
     }
   },
 
-  url: function() {
-    return '/projects' + this.category;
-  }
+
+  url: 'api/projects'
+
 });

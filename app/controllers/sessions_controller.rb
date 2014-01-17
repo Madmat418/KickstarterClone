@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  # before_filter :require_no_current_user!, :only => [:create, :new]
+#   before_filter :require_current_user!, :only => [:destroy]
+
   def new
     render :new
   end
@@ -8,7 +11,7 @@ class SessionsController < ApplicationController
     if @user
       reset_session
       log_in(@user)
-      redirect_to projects_url
+      redirect_to root_url
     else
       flash.now[:message] = "Invalid username and password combination"
       render :new

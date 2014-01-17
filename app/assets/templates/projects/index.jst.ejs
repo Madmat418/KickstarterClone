@@ -1,0 +1,10 @@
+
+<% projects.each(function (project) { %>
+  <li>
+    <a href='#<%= project.url() %>'><%= project.escape('name') %></a>
+  </li>
+<% }); %>
+
+<li>
+  <a href='projects/new'>Create a Project</a>
+</li>

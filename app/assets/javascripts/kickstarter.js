@@ -3,16 +3,15 @@ window.Kickstarter = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialze: function () {
-    var $rootEl = $('#content');
-    var $sidebar = $('#sidebar');
-    var projects = new Kickstarter.Collections.Projects();
+  initialize: function () {
+    var $rootEl = $('#main');
+    var projects = new Kickstarter.Collections.Projects('all');
 
-    var sidebarView = new Kickstarter.Views.sidebarView();
-    $sidebar.html(sidebarView.render().$el);
+    console.log('help');
 
     projects.fetch({
       success: function () {
+        console.log('meh');
         new Kickstarter.Routers.ProjectRouter(projects, $rootEl);
         Backbone.history.start();
       },
@@ -23,3 +22,4 @@ window.Kickstarter = {
   }
 };
 
+$(Kickstarter.initialize);
