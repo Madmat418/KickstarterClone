@@ -9,7 +9,7 @@ class Api::ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     if @project.save
       flash[:message] = "Project successfully created"
-      redirect_to project_url(@project)
+      render :show
     else
       flash.now[:errors] = @project.errors.full_messages
       render :new

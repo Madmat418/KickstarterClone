@@ -1,6 +1,5 @@
-<h1>Create a project</h1>
-<form action='<%= projects_url %>' method='post'>
-  <input type='hidden' name='authenticity_token' id='authenticity_token' value= '<%= form_authenticity_token %>'>
+<form id='project-form'>
+  <h1>Create a project</h1>
   <lable for='title'>Project Title</lable>
   <input type='text' name='project[name]' id='title'><br>
   <lable for='description'>Description</lable>
@@ -8,7 +7,12 @@
   <lable for='goal'>Your Support Goal</lable>
   <input type='text' name='project[goal]' id='goal'><br>
   <lable for='enddate'>When Will Your Support Drive End?</lable>
-  <input type='datetime' name='project[end_time]' id='enddate'><br>
-  <input type='submit' value='Create Project'>
-</form>
+  <html lang="en">
+  <input type='datetime' id="datepicker" name='project[end_time]'></div>
+  <script>
+    $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
+  </script>
 
+
+  <button id='create' class="btn btn-primary">Create Project</button>
+</form

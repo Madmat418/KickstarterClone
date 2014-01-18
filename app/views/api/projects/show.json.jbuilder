@@ -1,3 +1,4 @@
+json.id @project.id
 json.name @project.name
 json.goal @project.goal
 json.current_funding @project.current_funding

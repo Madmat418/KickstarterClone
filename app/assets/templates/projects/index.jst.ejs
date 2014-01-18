@@ -1,10 +1,2 @@
-
-<% projects.each(function (project) { %>
-  <li>
-    <a href='#<%= project.url() %>'><%= project.escape('name') %></a>
-  </li>
-<% }); %>
-
-<li>
-  <a href='projects/new'>Create a Project</a>
-</li>
+<ul id="projects"></ul>
+<a href='#/projects/new'>Create A New Project</a>

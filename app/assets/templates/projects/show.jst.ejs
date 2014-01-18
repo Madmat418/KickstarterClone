@@ -1,0 +1,15 @@
+<h1><%= project.escape('name') %></h1>
+<lable for='project'>Project Details</lable>
+<ul id='project'>
+  <li>Description: <%= project.escape('description') %></li>
+  <li>Goal: <%= project.escape('goal') %></li>
+  <li>Current Funding: <%= project.escape('current_funding') %></li>
+  <li>Number of supporters: <%= project.escape('num_supporters') %></li>
+  <li>Ending Time: <%= project.escape('end_time') %></li>
+  <li>Rewards:<br><ul>
+    <% rewards.forEach(function(reward) { %>
+      <li><%= reward.supporter_reward %>
+      <%= reward.support_amount %></li>
+    <% }); %>
+  </ul
+</ul>
