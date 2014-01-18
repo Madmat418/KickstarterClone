@@ -6,6 +6,8 @@ window.Kickstarter = {
   initialize: function () {
     var $rootEl = $('#main');
     var projects = new Kickstarter.Collections.Projects('all');
+    var view = new Kickstarter.Views.Sidebar();
+    $('#sidebar').html(view.render().$el);
 
     projects.fetch({
       success: function () {

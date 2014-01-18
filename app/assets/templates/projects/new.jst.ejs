@@ -12,7 +12,50 @@
   <script>
     $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
   </script>
+  <button class='show-modal btn btn-primary' data-toggle='modal'
+                       data-target='#myModal'>Add a Reward Level</button>
 
 
   <button id='create' class="btn btn-primary">Create Project</button>
 </form
+
+
+
+<div class='modal fade' id='myModal' aria-hidden='true'>
+
+  <div class='modal-dialog'>
+
+    <div class='modal-content'>
+      <lable for='add-reward'>Add a Reward Level</lable>
+      <form id='add-reward'>
+        <lable for='amount'>Support Amount</lable>
+        <input type='text' name='reward[support_amount]'>
+        <lable for='reward'>Supporter Reward</lable>
+        <textarea name='reward[supporter_reward]'></textarea>
+        <button id='hide-modal' class='btn btn-default' data-dismiss='modal'>
+                                                               Close</button>
+        <button id='hide-modal' class='btn btn-primary'>
+                                               Add This Reward Level</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(".show-modal").on("click", function(event){
+    event.preventDefault();
+    $("#modal").addClass("is-active");
+  });
+
+  $(".hide-modal").on("click", function(event){
+    event.preventDefault();
+    $("#modal").removeClass("is-active");
+  });
+
+  $("#modal").on("click", function(event){
+    if(event.target.id == this.id){
+      event.preventDefault();
+      $("#modal").removeClass("is-active");
+    }
+  });
+</script>
