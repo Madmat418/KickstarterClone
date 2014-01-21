@@ -37,6 +37,7 @@ GEM
       jquery-rails
       rails (>= 3.1)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -73,6 +74,7 @@ GEM
     mime-types (1.25.1)
     multi_json (1.8.4)
     pg (0.17.1)
+    pg (0.17.1-x86-mingw32)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -121,6 +123,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   annotate

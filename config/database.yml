@@ -17,6 +17,8 @@ development:
   encoding: unicode
   database: Kickstarter_development
   pool: 5
+  username: postgres
+  password: m41888mjw
 
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -42,9 +44,13 @@ test:
   encoding: unicode
   database: Kickstarter_test
   pool: 5
+  username: postgres
+  password: m41888mjw
 
 production:
   adapter: postgresql
   encoding: unicode
   database: Kickstarter_production
   pool: 5
+  username: postgres
+  password: m41888mjw
