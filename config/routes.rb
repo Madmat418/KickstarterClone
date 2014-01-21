@@ -1,7 +1,6 @@
 Kickstarter::Application.routes.draw do
   root to: "root#root"
-  resources :users, :only => [:new, :create]
-  resource :user, :only => [:show]
+  resources :users, :only => [:new, :create, :show, :index]
   resource :session, :only => [:new, :create, :destroy]
   namespace :api, :defaults => { :format => :json } do
     resources :projects, :only => [:new, :create, :show, :index] do

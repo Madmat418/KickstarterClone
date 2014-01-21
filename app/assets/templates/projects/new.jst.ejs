@@ -21,11 +21,11 @@
 
 
 
-<div class='modal fade' id='myModal' aria-hidden='true'>
+<div class='modal fade'>
 
   <div class='modal-dialog'>
 
-    <div class='modal-content'>
+    <div id='myModal' class='modal-content' style='display:none;'>
       <lable for='add-reward'>Add a Reward Level</lable>
       <form id='add-reward'>
         <lable for='amount'>Support Amount</lable>
@@ -44,7 +44,7 @@
 <script>
   $(".show-modal").on("click", function(event){
     event.preventDefault();
-    $("#modal").addClass("is-active");
+    $("#myModal").addClass('is-active');
   });
 
   $(".hide-modal").on("click", function(event){

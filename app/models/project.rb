@@ -21,7 +21,9 @@ class Project < ActiveRecord::Base
   has_many :rewards
   has_many :supports, :through => :rewards, :source => :supports
   has_many :supporters, :through => :supports, :source => :user
-
+  belongs_to :owner,
+             :class_name => 'User',
+			 :foreign_key => :owner_id
 
   def current_funding
     current_funding = 0
@@ -30,12 +32,17 @@ class Project < ActiveRecord::Base
     supporters.each {|amount| current_funding += amount}
     return current_funding
   end
+  
+  def percentage
+    return 100 if self.current_funding >= self.goal
+	return (self.current_funding / self.goal) * 100
+  end
 
   def num_supporters
     self.supporters.length
   end
 
   def is_successful?
-    self.current_funding >= self.goal
+    self.percentage >= 100
   end
 end
