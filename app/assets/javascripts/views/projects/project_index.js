@@ -10,7 +10,6 @@ Kickstarter.Views.ProjectIndex = Backbone.View.extend({
       var view = new Kickstarter.Views.ProjectItem({ model: project });
       that.$('#projects').append(view.render().$el);
     });
-    console.log(this.$('#projects'))
     return this;
   }
 })
