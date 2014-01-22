@@ -13,17 +13,26 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :description, :goal, :name, :owner_id, :end_time
+  attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards
 
   validates :description, :goal, :name, :owner_id,
             :presence => true
 
-  has_many :rewards
+  has_many :rewards, :inverse_of => :project
   has_many :supports, :through => :rewards, :source => :supports
   has_many :supporters, :through => :supports, :source => :user
   belongs_to :owner,
              :class_name => 'User',
 			 :foreign_key => :owner_id
+			 
+  def rewards=(rewards_hash)
+    rewards_array = rewards_hash[:supporter_reward]
+	amounts_array = rewards_hash[:support_amount]
+	
+    rewards_array.each_with_index do |reward, idx|
+	  self.rewards.build(:supporter_reward => reward, :support_amount => amounts_array[idx])
+    end
+  end
 
   def current_funding
     current_funding = 0

@@ -6,6 +6,7 @@ class Api::ProjectsController < ApplicationController
 
   def create
     params[:project][:owner_id] = current_user.id
+	puts params
     @project = Project.new(params[:project])
     if @project.save
       flash[:message] = "Project successfully created"

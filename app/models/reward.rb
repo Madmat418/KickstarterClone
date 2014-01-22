@@ -13,8 +13,8 @@
 class Reward < ActiveRecord::Base
   attr_accessible :project_id, :support_amount, :supporter_reward
 
-  validates :project_id, :support_amount, :supporter_reward, :presence => true
+  validates :project, :support_amount, :supporter_reward, :presence => true
 
-  belongs_to :project
+  belongs_to :project, :inverse_of => :rewards
   has_many :supports
 end

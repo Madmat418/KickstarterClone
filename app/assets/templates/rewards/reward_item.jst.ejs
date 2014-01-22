@@ -1,0 +1,7 @@
+<div class='reward' data-id='<%=counter%>'>
+  <%=reward.support_amount%>  <%=reward.supporter_reward%>
+  <input type='hidden' value='<%= reward.support_amount %>' name='project[rewards][support_amount][<%=counter%>]'>
+  <input type='hidden' value='<%= reward.supporter_reward %>' name='project[rewards][supporter_reward][<%=counter%>'>
+  <button class='remove-reward'</button>
+</div>
+
