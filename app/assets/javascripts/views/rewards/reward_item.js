@@ -1,5 +1,4 @@
 Kickstarter.Views.RewardItem = Backbone.View.extend({
-  tagName: 'li',
   template: JST['rewards/reward_item'],
   
   initialize: function(options) {

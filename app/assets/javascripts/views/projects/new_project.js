@@ -19,22 +19,19 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
   },
   
   createReward: function (event) {
-    var that = this;
 	event.preventDefault();
 	var data = this.$('#add-reward').serializeJSON();
-	var view = new Kickstarter.Views.RewardItem( {model: data, counter: this.rewardCounter})
+	var view = new Kickstarter.Views.RewardItem( {model: data, counter: this.rewardCounter});
 	this.rewardCounter++;
-	this.$('#rewards').append(view.render().$el)
-	$("#modal").removeClass("is-active")
-  
+	this.$('#rewards').append(view.render().$el);
+	$("#myModal").hide();
+	$('#add-reward')[0].reset();
   },
-
+  
   submit: function (event) {
     var that = this
     event.preventDefault();
     var data = this.$('#project-form').serializeJSON();
-	console.log('here');
-	console.log(data.project.rewards);
     this.collection.create(data, {
       success: function(project) {
         console.log('success');

@@ -8,7 +8,7 @@ Kickstarter::Application.routes.draw do
     end
 
     resources :rewards, :only => [] do
-      resources :supports, :only => [:create]
+      resources :supports, :only => [:create, :index]
     end
   end
 end

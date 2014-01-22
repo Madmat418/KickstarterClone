@@ -1,7 +1,8 @@
 <h1><%= project.escape('name') %></h1>
-<h2>Created By: <a href='/#/users/<%= project.escape('owner_id') %>'><%= project.escape('owner_name') %></a></h2>
+<h2>Created By: <a href='/#/users/<%= project.escape('owner_id') %>'>
+    <%= project.escape('owner_name') %></a></h2>
 <lable for='project'>Project Details</lable>
-<ul id='project'>
+<ul class='project'>
   <li>Description: <%= project.escape('description') %></li>
   <li>Goal: <%= project.escape('goal') %></li>
   <li>Current Funding: <%= project.escape('current_funding') %></li>
@@ -10,7 +11,9 @@
   <li>Rewards:<br><ul>
     <% rewards.forEach(function(reward) { %>
       <li><%= reward.supporter_reward %>
-      <%= reward.support_amount %></li>
+	  <button class='add-support' id='<%= reward.id %>'>
+	    Support for <%= reward.support_amount %></button>
+	  </li>
     <% }); %>
   </ul
 </ul>

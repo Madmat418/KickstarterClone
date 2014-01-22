@@ -1,7 +1,21 @@
-<div class='reward' data-id='<%=counter%>'>
+<li class='reward-<%=counter%>'>
   <%=reward.support_amount%>  <%=reward.supporter_reward%>
   <input type='hidden' value='<%= reward.support_amount %>' name='project[rewards][support_amount][<%=counter%>]'>
   <input type='hidden' value='<%= reward.supporter_reward %>' name='project[rewards][supporter_reward][<%=counter%>'>
-  <button class='remove-reward'</button>
-</div>
+  <button class='remove-reward' id='<%= counter %>'>Remove</button>
+
+
+<script>
+
+  $('.remove-reward').on('click', function (event) {
+    console.log('wat');
+    event.preventDefault();
+	var id = event.currentTarget.id;
+	console.log(id);
+	$('.reward-' + id).remove();
+  });
+</script>
+
+</li>
+
 

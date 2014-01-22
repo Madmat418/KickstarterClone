@@ -13,4 +13,9 @@ class Api::RewardsController < ApplicationController
     end
     redirect_to project_url(params[:project_id])
   end
+  
+  def index
+    @rewards = Reward.where(project_id: params[:project_id])
+	render :index
+  end
 end

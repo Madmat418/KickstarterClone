@@ -23,12 +23,12 @@
 
 
 
-<div class='modal fade'>
-
-  <div class='modal-dialog'>
-
-    <div id='myModal' class='modal-content' style='display:none;'>
-      <lable for='add-reward'>Add a Reward Level</lable>
+<div class='modal hide'>
+  <div class='modal-body' id='myModal' style='display:none;'>
+    <div class="modal-header">
+      <h3>Add a Reward Level</h3>
+    </div>
+    <div class='modal-body'>
       <form id='add-reward'>
         <lable for='amount'>Support Amount</lable>
         <input type='text' name='reward[support_amount]'>
@@ -36,9 +36,19 @@
         <textarea name='reward[supporter_reward]'></textarea>
         <button class='hide-modal' class='btn btn-default' data-dismiss='modal'>
                                                                Close</button>
-        <input type='submit' class='btn btn-primary hide-modal' value='Add this Reward Level' >
+        <input type='submit' class='btn btn-primary' value='Add this Reward Level' >
       </form>
     </div>
   </div>
 </div>
+
+<script>
+  $('.show-modal').on('click', function() {
+    $('#myModal').show();
+  });
+  
+  $('.hide-modal').on('click', function () {
+    $('#add-reward')[0].reset();
+  });
+</script>
 
