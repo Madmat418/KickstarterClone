@@ -15,7 +15,7 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
 
   events: {
     'click #create': 'submit',
-	'submit #add-reward': 'createReward'
+	'click #submit': 'createReward'
   },
   
   createReward: function (event) {
@@ -25,6 +25,7 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
 	this.rewardCounter++;
 	this.$('#rewards').append(view.render().$el);
 	$("#myModal").hide();
+	$(".modal-backdrop").hide();
 	$('#add-reward')[0].reset();
   },
   
@@ -32,6 +33,7 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
     var that = this
     event.preventDefault();
     var data = this.$('#project-form').serializeJSON();
+	console.log(data);
     this.collection.create(data, {
       success: function(project) {
         console.log('success');

@@ -10,14 +10,15 @@
 #  end_time    :datetime         not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category_id :integer
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards
+  attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards, :category_id
 
   validates :description, :goal, :name, :owner_id,
             :presence => true
-
+  belongs_to :category
   has_many :rewards, :inverse_of => :project
   has_many :supports, :through => :rewards, :source => :supports
   has_many :supporters, :through => :supports, :source => :user

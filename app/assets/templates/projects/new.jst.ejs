@@ -2,6 +2,22 @@
   <h1>Create a project</h1>
   <lable for='title'>Project Title</lable>
   <input type='text' name='project[name]' id='title'><br>
+  <lable for='category'>Category</lable>
+  <ul id='category'>
+    <li><input type='radio' name='project[category_id]' value=1>Art</li>
+	<li><input type='radio' name='project[category_id]' value=2>Comics</li>
+	<li><input type='radio' name='project[category_id]' value=3>Dance</li>
+	<li><input type='radio' name='project[category_id]' value=4>Design</li>
+	<li><input type='radio' name='project[category_id]' value=5>Fashion</li>
+	<li><input type='radio' name='project[category_id]' value=6>Film & Video</li>
+	<li><input type='radio' name='project[category_id]' value=7>Food</li>
+	<li><input type='radio' name='project[category_id]' value=8>Games</li>
+	<li><input type='radio' name='project[category_id]' value=9>Music</li>
+	<li><input type='radio' name='project[category_id]' value=10>Photography</li>
+	<li><input type='radio' name='project[category_id]' value=11>Publishing</li>
+	<li><input type='radio' name='project[category_id]' value=12>Technology</li>
+	<li><input type='radio' name='project[category_id]' value=13>Theater</li>
+  </ul>
   <lable for='description'>Description</lable>
   <textarea name='project[description]' id='description'></textarea><br>
   <lable for='goal'>Your Support Goal</lable>
@@ -12,8 +28,9 @@
   <script>
     $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
   </script><br>
-  <button class='show-modal btn btn-primary' data-toggle='modal'
-                       data-target='#myModal'>Add a Reward Level</button><br>
+  <button class='btn btn-primary' data-toggle='modal' data-target='#myModal'>
+    Add a Reward Level
+  </button><br>
   <ul id='rewards'>
   </ul>
 
@@ -23,8 +40,8 @@
 
 
 
-<div class='modal hide'>
-  <div class='modal-body' id='myModal' style='display:none;'>
+<div class='modal fade' aria-hidden='true'>
+  <div class='modal-dialog' aria-hidden='true' id='myModal' style='display: none;'>
     <div class="modal-header">
       <h3>Add a Reward Level</h3>
     </div>
@@ -34,21 +51,13 @@
         <input type='text' name='reward[support_amount]'>
         <lable for='reward'>Supporter Reward</lable>
         <textarea name='reward[supporter_reward]'></textarea>
+	  </form>
+	</div>
+	<div class='modal-footer'>
         <button class='hide-modal' class='btn btn-default' data-dismiss='modal'>
                                                                Close</button>
-        <input type='submit' class='btn btn-primary' value='Add this Reward Level' >
-      </form>
-    </div>
+        <button type='button' class='btn btn-primary' id='submit'>Add this Reward Level'</button>
+
   </div>
 </div>
-
-<script>
-  $('.show-modal').on('click', function() {
-    $('#myModal').show();
-  });
-  
-  $('.hide-modal').on('click', function () {
-    $('#add-reward')[0].reset();
-  });
-</script>
 

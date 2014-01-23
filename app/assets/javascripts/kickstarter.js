@@ -5,7 +5,8 @@ window.Kickstarter = {
   Routers: {},
   initialize: function () {
     var $rootEl = $('#main');
-    var projects = new Kickstarter.Collections.Projects();
+    var projects = new Kickstarter.Collections.Projects({
+	  category_id: 0 });
 	var users = new Kickstarter.Collections.Users();
     var view = new Kickstarter.Views.Sidebar();
     $('#sidebar').html(view.render().$el);
