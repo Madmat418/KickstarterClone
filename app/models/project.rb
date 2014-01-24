@@ -43,8 +43,17 @@ class Project < ActiveRecord::Base
     return current_funding
   end
   
-  def ended?
-    this.end_time < Time.now
+  def time_left
+    days = this.end_time.day - Time.now.day
+	hours = this.end_time.hour - Time.now.hour
+	minutes = this.end_time.minute - Time.now.minute
+	@time_left = days + " days, #{hours} hours, and #{minutes} minutes"
+  end
+  
+  
+  
+  def ongoing?
+    this.end_time > Time.now
   end
   
   def status

@@ -10,7 +10,8 @@ json.array! @projects do |project|
   json.current_funding project.current_funding
   json.num_supporters project.num_supporters
   json.status project.status
-  json.ended? project.status
+  json.ongoing? project.ongoing?
+  json.time_left project.time_left
   json.percentage project.percentage
 end
 
