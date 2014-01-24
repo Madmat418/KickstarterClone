@@ -1,10 +1,12 @@
 Kickstarter.Views.ProjectShow = Backbone.View.extend({
   template: JST['projects/show'],
   
-  initialize: function() {
+  initialize: function(options) {
     this.collection = new Kickstarter.Collections.Supports();
 	this.collection.fetch();
-    this.listenTo(this.collection, 'add', this.render);	  
+    this.listenTo(this.collection, 'add', this.render);	
+	console.log(options);
+    this.model = options.model;	
   },
   
   events: {

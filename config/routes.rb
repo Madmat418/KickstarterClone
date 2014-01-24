@@ -5,9 +5,9 @@ Kickstarter::Application.routes.draw do
   namespace :api, :defaults => { :format => :json } do
   
     resources :categories, :only => [:index] do
-	  resources :projects, :only => [:index]
+	  resources :projects, :only => [:index, :create]
 	end
-    resources :projects, :only => [:new, :create, :show] do
+    resources :projects, :only => [:new, :show] do
       resources :rewards, :only => [:new, :create, :index]
     end
 

@@ -25,6 +25,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    if params[:category_id] == '0'
+      @projects = Project.all
+    else
+      @projects = Project.where(category_id: params[:category_id].to_i)  
+    end
+	render :index
   end
 end

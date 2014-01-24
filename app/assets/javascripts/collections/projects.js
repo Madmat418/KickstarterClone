@@ -6,6 +6,7 @@ Kickstarter.Collections.Projects = Backbone.Collection.extend({
 
 
   url: function() {
+    console.log(this.category_id)
     return 'api/categories/' + this.category_id + '/projects'
   }
 });
