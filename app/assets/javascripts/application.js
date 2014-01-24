@@ -15,8 +15,8 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
-//= require kickstarter
 //= require bootstrap
+//= require kickstarter
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

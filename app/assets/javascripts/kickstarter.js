@@ -8,11 +8,11 @@ window.Kickstarter = {
     var projects = new Kickstarter.Collections.Projects({
 	  category_id: 0 });
 	var users = new Kickstarter.Collections.Users();
-    var view = new Kickstarter.Views.Sidebar();
-	var categories = new Kickstarter.Collections.Categories();
-    $('#sidebar').html(view.render().$el);
+    var categories = new Kickstarter.Collections.Categories();
     users.fetch();
     categories.fetch({ success: function() {
+	  var view = new Kickstarter.Views.Sidebar( {collection: categories});
+	  $('#sidebar').html(view.render().$el);
       projects.fetch({
         success: function () {
           new Kickstarter.Routers.ProjectRouter(projects, users, categories, $rootEl);
