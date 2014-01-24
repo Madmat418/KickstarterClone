@@ -49,11 +49,6 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
         console.log('error')
       }
   })
-     if(!this.model.id) {
-       this.collection.create(data, { success: this._navToShow });
-     } else {
-       this.model.save(data, { success: this._navToShow });
-     }
   },
 
   _navToShow: function (project) {
