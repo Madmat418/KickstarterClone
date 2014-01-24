@@ -5,6 +5,8 @@ json.current_funding @project.current_funding
 json.num_supports @project.num_supporters
 json.owner_id @project.owner_id
 json.owner_name @project.owner.username
+json.status @project.status
+json.ended? @project.ended?
 json.percentage @project.percentage
 json.rewards do
   json.array! @rewards do |reward|

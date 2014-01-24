@@ -43,6 +43,20 @@ class Project < ActiveRecord::Base
     return current_funding
   end
   
+  def ended?
+    this.end_time < Time.now
+  end
+  
+  def status
+    if this.percentage >= 100
+	  @status = 'Successfull'
+	elsif ended?
+	  @status = 'Unsuccessfull'
+	else
+	  @status = 'In Progress'
+	end
+  end
+  
   def percentage
     return 100 if self.current_funding >= self.goal
 	return (self.current_funding / self.goal) * 100
