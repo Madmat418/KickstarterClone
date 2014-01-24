@@ -14,12 +14,12 @@
 
 <body style='padding-top: 60px;'>
 
-  <% if !session[:message].nil? %>
+  <% unless !session[:message] %>
   <%= session[:message] %>
   <% end %>
 
 
-  <% if session[:errors] %>
+  <% unless !session[:errors] %>
     <% session[:errors].each do |error| %>
       <%= error %>
     <% end %>
@@ -33,6 +33,11 @@
   <% else %>
   <%= link_to "Sign Up", new_user_url %>
   <%= link_to "Sign In", new_session_url %>
+  <form method='<%= session_url %>' action='POST'>
+    <input type='hidden' name='session[username]' value='guest'>
+	<input type='hidden' name='session[password]' value='password'>
+	<input type='submit' value='Sign In As Guest'>
+  </form>
   <% end %>
 
 </body>
