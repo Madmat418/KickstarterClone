@@ -4,14 +4,14 @@ class Api::ProjectsController < ApplicationController
     render :new
   end
 
-  def create
-    puts 'ahhhhhhhhhhhhhhhhhhhhhhhhhhhhh'
-    puts Project.last.name
-	
+  def create	
     params[:project][:owner_id] = current_user.id
     @project = Project.new(params[:project])
+    puts @project
+	
+	puts 'watatatatatatatat'
     if @project.save
-	  puts Project.last.name
+	puts @project
       flash[:message] = "Project successfully created"
       render :show
     else

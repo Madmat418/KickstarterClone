@@ -6,7 +6,7 @@ json.num_supports @project.num_supporters
 json.owner_id @project.owner_id
 json.owner_name @project.owner.username
 json.status @project.status
-json.ongoing? @project.ongoing?
+json.ongoing @project.ongoing
 json.time_left @project.time_left
 json.percentage @project.percentage
 json.rewards do

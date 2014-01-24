@@ -11,10 +11,12 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
+#  percentage  :integer
+#  status      :string(255)
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards, :category_id
+  attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards, :category_id, :time_left, :status, :percentage, :time_left
 
   validates :description, :goal, :name, :owner_id,
             :presence => true
@@ -43,32 +45,50 @@ class Project < ActiveRecord::Base
     return current_funding
   end
   
+  def time_left=
+    days = self.end_time.day - Time.now.day
+	hours = self.end_time.hour - Time.now.hour
+	if hours < 0
+	  days -= 1
+	  hours += 24
+	end
+	@time_left = "#{days} days, #{hours} hours"
+  end
+  
   def time_left
-    days = this.end_time.day - Time.now.day
-	hours = this.end_time.hour - Time.now.hour
-	minutes = this.end_time.minute - Time.now.minute
-	@time_left = days + " days, #{hours} hours, and #{minutes} minutes"
+    @time_left
   end
   
   
   
-  def ongoing?
-    this.end_time > Time.now
+  def ongoing
+    self.end_time > Time.now
   end
   
-  def status
-    if this.percentage >= 100
+  def status=
+    if self.percentage >= 100
 	  @status = 'Successfull'
-	elsif ended?
+	elsif !self.ongoing
 	  @status = 'Unsuccessfull'
 	else
 	  @status = 'In Progress'
 	end
   end
   
+  def status
+    @status
+  end
+  
   def percentage
-    return 100 if self.current_funding >= self.goal
-	return (self.current_funding / self.goal) * 100
+    @percentage
+  end
+  
+  def percentage=
+    if self.current_funding >= self.goal
+      @percentage = 100
+	else
+	  @percentage = (self.current_funding / self.goal) * 100
+    end
   end
 
   def num_supporters

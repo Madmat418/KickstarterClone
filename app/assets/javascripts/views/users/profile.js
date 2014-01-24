@@ -8,6 +8,7 @@ Kickstarter.Views.UserView = Backbone.View.extend ({
     var content = this.template( {user: this.model});
 	this.$el.html(content);
 	this.model.get('supported_projects').forEach(function (project) {
+	  console.log(project);
 	  var view = new Kickstarter.Views.ProjectItem({ model: project });
 	  that.$('#supports').append(view.render().$el);
 	});
