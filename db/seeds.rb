@@ -11,3 +11,5 @@ categories = Category.create([{ category: 'Art', id: 1}, { category: 'Comics', i
 { category: 'Film & Video', id: 6}, { category: 'Food', id: 7}, { category: 'Games', id: 8},
 { category: 'Music', id: 9}, { category: 'Photography', id: 10}, { category: 'Publishing', id: 11},
 { category: 'Technology', id: 12}, { category: 'Theater', id: 13}])
+
+guest_user = User.create([{ username: 'guest', id: 0, password: 'password'}])
