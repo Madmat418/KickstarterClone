@@ -16,7 +16,9 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
   },
 
   render: function () {
-  
+    console.log('rendering');
+	console.log(this.model);
+	console.log(this.model.rewards);
     var rewardArray = [];
     this.model.get('rewards').forEach(function(reward) {
       rewardArray.push(reward);

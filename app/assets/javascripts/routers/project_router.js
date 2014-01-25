@@ -47,6 +47,7 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
   },
 
   show: function (id) {
+    console.log(this.projects.get(id));
     var projectShow = new Kickstarter.Views.ProjectShow ( {
       model: this.projects.get(id)
     });
