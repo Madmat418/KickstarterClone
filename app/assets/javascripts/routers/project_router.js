@@ -5,7 +5,6 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
 	this.categories = categories
     this.projects = projects;
     this.$rootEl = $rootEl;
-	console.log(projects);
   },
 
   routes: {
@@ -17,7 +16,8 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
   },
   
   profile: function (id) {
-  
+    console.log(id);
+	console.log(this.users);
     var profileView = new Kickstarter.Views.UserView ( {
 	  model: this.users.get(id)
 	});

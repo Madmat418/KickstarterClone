@@ -11,8 +11,6 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer
-#  percentage  :integer
-#  status      :string(255)
 #
 
 class Project < ActiveRecord::Base
@@ -45,7 +43,7 @@ class Project < ActiveRecord::Base
     return current_funding
   end
   
-  def time_left=
+  def time_left
     days = self.end_time.day - Time.now.day
 	hours = self.end_time.hour - Time.now.hour
 	if hours < 0
@@ -55,17 +53,13 @@ class Project < ActiveRecord::Base
 	@time_left = "#{days} days, #{hours} hours"
   end
   
-  def time_left
-    @time_left
-  end
-  
   
   
   def ongoing
     self.end_time > Time.now
   end
   
-  def status=
+  def status
     if self.percentage >= 100
 	  @status = 'Successfull'
 	elsif !self.ongoing
@@ -75,15 +69,7 @@ class Project < ActiveRecord::Base
 	end
   end
   
-  def status
-    @status
-  end
-  
   def percentage
-    @percentage
-  end
-  
-  def percentage=
     if self.current_funding >= self.goal
       @percentage = 100
 	else

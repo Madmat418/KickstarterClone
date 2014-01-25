@@ -7,11 +7,8 @@ class Api::ProjectsController < ApplicationController
   def create	
     params[:project][:owner_id] = current_user.id
     @project = Project.new(params[:project])
-    puts @project
-	
-	puts 'watatatatatatatat'
     if @project.save
-	puts @project
+
       flash[:message] = "Project successfully created"
       render :show
     else

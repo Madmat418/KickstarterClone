@@ -39,10 +39,8 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
     var that = this
     event.preventDefault();
     var data = this.$('#project-form').serializeJSON();
-	console.log(data);
     this.collection.create(data, {
       success: function(project) {
-        console.log('success');
         that._navToShow(project);
       },
       error: function() {

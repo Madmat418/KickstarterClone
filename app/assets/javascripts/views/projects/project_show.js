@@ -1,11 +1,13 @@
 Kickstarter.Views.ProjectShow = Backbone.View.extend({
   template: JST['projects/show'],
+  className: 'project-show',
   
   initialize: function(options) {
     this.collection = new Kickstarter.Collections.Supports();
 	this.collection.fetch();
-    this.listenTo(this.collection, 'add', this.render);	
-	console.log(options);
+    this.listenTo(this.collection, 'all', this.render);	    
+	this.listenTo(this.model, 'all', this.render);	
+
     this.model = options.model;	
   },
   
@@ -14,8 +16,8 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
   },
 
   render: function () {
+  
     var rewardArray = [];
-	console.log('rendering');
     this.model.get('rewards').forEach(function(reward) {
       rewardArray.push(reward);
     })
@@ -24,16 +26,23 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
     return this
   },
   
+  supportRender: function () {
+	var view = new Kickstarter.Views.ProjectShow({ model: this.model });
+    $('.project-show').html(view.render().$el)
+  },
+  
   addSupport: function (event) {
     var that = this;
     event.preventDefault;
-	console.log('adding support');
 	var id = event.currentTarget.id;
 	this.collection.reward_id = id
-	/* new Kickstarter.Collections.Supports({
+    new Kickstarter.Collections.Supports({
 	  reward_id: id
-	}); */
-	this.collection.create()
+	});
+
+	this.collection.create({}, {success: function() {
+	  that.model.fetch();
+	}});
   }
   
   
