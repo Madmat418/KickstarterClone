@@ -12,12 +12,12 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
     'projects/new': 'new',
     'projects/:id': 'show',
 	'users/:id': 'profile', 
-    'categories/:category_id/projects': 'category'
+    'categories/:category_id/projects': 'category',
+	'categories/0/projects/:id': 'show'
   },
   
   profile: function (id) {
-    console.log(id);
-	console.log(this.users);
+    this.users.fetch();
     var profileView = new Kickstarter.Views.UserView ( {
 	  model: this.users.get(id)
 	});
@@ -47,18 +47,23 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
   },
 
   show: function (id) {
-    console.log(this.projects.get(id));
-    var projectShow = new Kickstarter.Views.ProjectShow ( {
-      model: this.projects.get(id)
-    });
-
-    this._swapView(projectShow);
+    var that = this;
+    this.projects.fetch({ success: function () {
+      var model = that.projects.get(id);
+	  var projectShow = new Kickstarter.Views.ProjectShow ( {
+        model: that.projects.get(id)
+      });
+      that._swapView(projectShow);
+	},
+	  error: function () {
+	    console.log('error');
+      }
+	});
   },
 
   new: function () {
     var newProject = new Kickstarter.Views.NewProject({
-      collection: this.projects,
-      model: new Kickstarter.Models.Project()
+      collection: this.projects
     });
 
     this._swapView(newProject);

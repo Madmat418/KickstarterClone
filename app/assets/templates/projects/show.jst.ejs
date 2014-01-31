@@ -9,10 +9,10 @@
   <li>Number of supporters: <%= project.escape('num_supporters') %></li>
   <li>Ending Time: <%= project.escape('end_time') %></li>
   <li>Rewards:<br><ul>
-    <% rewards.forEach(function(reward) { %>
-      <li><%= reward.supporter_reward %>
+    <% rewards.each(function(reward) { %>
+      <li><%= reward.escape('supporter_reward') %>
 	  <button class='add-support' id='<%= reward.id %>'>
-	    Support for <%= reward.support_amount %></button>
+	    Support for <%= reward.escape('support_amount') %></button>
 	  </li>
     <% }); %>
   </ul

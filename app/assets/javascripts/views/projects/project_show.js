@@ -3,8 +3,13 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
   className: 'project-show',
   
   initialize: function(options) {
+    console.log('initializing');
     this.collection = new Kickstarter.Collections.Supports();
 	this.collection.fetch();
+	this.rewards = new Kickstarter.Collections.Rewards({project_id: this.model.id});
+	this.rewards.fetch();
+	this.model = options.model;
+	this.model.fetch();
     this.listenTo(this.collection, 'all', this.render);	    
 	this.listenTo(this.model, 'all', this.render);	
 
@@ -16,21 +21,10 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
   },
 
   render: function () {
-    console.log('rendering');
-	console.log(this.model);
-	console.log(this.model.rewards);
-    var rewardArray = [];
-    this.model.get('rewards').forEach(function(reward) {
-      rewardArray.push(reward);
-    })
-    var content = this.template({ project: this.model, rewards: rewardArray });
+    console.log(this);
+    var content = this.template({ project: this.model, rewards: this.rewards });
     this.$el.html(content);
     return this
-  },
-  
-  supportRender: function () {
-	var view = new Kickstarter.Views.ProjectShow({ model: this.model });
-    $('.project-show').html(view.render().$el)
   },
   
   addSupport: function (event) {
@@ -43,6 +37,8 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
 	});
 
 	this.collection.create({}, {success: function() {
+	  console.log('fetch');
+	  that.collection.fetch();
 	  that.model.fetch();
 	}});
   }
