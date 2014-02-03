@@ -12,3 +12,16 @@
  *= require_tree .
  */
 @import "bootstrap";
+
+body {
+  font-size:150%;
+  padding-top: 125px;
+  padding-left: 90px;
+  background-image:url('fifth.jpg');
+  background-repeat:x-repeat;
+  background-attachment:fixed;
+}
+
+.div {
+  max-width: 500px;
+}

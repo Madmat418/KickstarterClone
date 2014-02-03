@@ -36,11 +36,9 @@ class Project < ActiveRecord::Base
   end
 
   def current_funding
-    current_funding = 0
-    return 0 if self.supports.length == 0
-    supporters = self.supports.map {|support| support.reward.support_amount}
-    supporters.each {|amount| current_funding += amount}
-    return current_funding
+    @current_funding = 0
+    self.supports.map {|support| @current_funding += support.reward.support_amount}
+    @current_funding
   end
   
   def time_left
@@ -60,21 +58,13 @@ class Project < ActiveRecord::Base
   end
   
   def status
-    if self.percentage >= 100
+    if self.current_funding >= self.goal
 	  @status = 'Successfull'
 	elsif !self.ongoing
 	  @status = 'Unsuccessfull'
 	else
 	  @status = 'In Progress'
 	end
-  end
-  
-  def percentage
-    if self.current_funding >= self.goal
-      @percentage = 100
-	else
-	  @percentage = (self.current_funding / self.goal) * 100
-    end
   end
 
   def num_supporters

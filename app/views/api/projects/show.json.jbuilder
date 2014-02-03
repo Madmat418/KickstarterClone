@@ -8,7 +8,6 @@ json.owner_name @project.owner.username
 json.status @project.status
 json.ongoing @project.ongoing
 json.time_left @project.time_left
-json.percentage @project.percentage
 json.rewards do
   json.array @rewards do |reward|
     json.support_amount reward.support_amount

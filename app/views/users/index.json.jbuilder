@@ -14,7 +14,6 @@ json.array! @users do |user|
     json.status project.status
     json.ongoing project.ongoing
     json.time_left project.time_left
-    json.percentage project.percentage
   end
   json.created_projects user.created_projects do |project|
     json.id project.id
@@ -27,7 +26,6 @@ json.array! @users do |user|
     json.status project.status
     json.ongoing project.ongoing
     json.time_left project.time_left
-    json.percentage project.percentage
   end
 end
 

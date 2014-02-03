@@ -12,6 +12,5 @@ json.array! @projects do |project|
   json.status project.status
   json.ongoing project.ongoing
   json.time_left project.time_left
-  json.percentage project.percentage
 end
 

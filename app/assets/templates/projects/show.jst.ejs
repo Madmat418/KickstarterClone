@@ -10,10 +10,10 @@
   <li>Ending Time: <%= project.escape('end_time') %></li>
   <li>Rewards:<br><ul>
     <% rewards.each(function(reward) { %>
-      <li><%= reward.escape('supporter_reward') %>
+      <li><div class='hero-unit'><%= reward.escape('supporter_reward') %>
 	  <button class='add-support' id='<%= reward.id %>'>
 	    Support for <%= reward.escape('support_amount') %></button>
-	  </li>
+	  </div></li>
     <% }); %>
   </ul
 </ul>
