@@ -3,8 +3,9 @@ Kickstarter.Views.UserView = Backbone.View.extend ({
   className: 'user-show',
   
   render: function () {
+    var projects = new Kickstarter.Collections.Projects({category_id: 0})
+	projects.fetch();
     var that = this;
-    console.log(this.model);
     var content = this.template( {user: this.model});
 	this.$el.html(content);
 
