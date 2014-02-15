@@ -1,7 +1,6 @@
 Kickstarter.Views.CategoriesIndex = Backbone.View.extend ({
   template: JST['categories/index'],
   tagName: 'ul',
-  className: 'hero-unit',
   
   render: function() {
     var that = this

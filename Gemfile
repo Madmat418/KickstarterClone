@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.15'
 
+gem 'paperclip'
+gem 'aws-sdk'
 
 gem 'pg'
 gem 'annotate'
@@ -19,3 +21,4 @@ gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
 gem 'jbuilder'
+gem 's3_direct_upload'

@@ -1,3 +1,4 @@
+<div class='hero-unit'>
 <h1><%= project.escape('name') %></h1>
 <h2>Created By: <a href='/#/users/<%= project.escape('owner_id') %>'>
     <%= project.escape('owner_name') %></a></h2>
@@ -10,11 +11,12 @@
   <li>Ending Time: <%= project.escape('end_time') %></li>
   <li>Rewards:<br><ul>
     <% rewards.each(function(reward) { %>
-      <li><div class='hero-unit'><%= reward.escape('supporter_reward') %>
+      <li><div><%= reward.escape('supporter_reward') %>
 	  <button class='add-support' id='<%= reward.id %>'>
 	    Support for <%= reward.escape('support_amount') %></button>
 	  </div></li>
     <% }); %>
   </ul
 </ul>
+<div class='hero-unit'>
 

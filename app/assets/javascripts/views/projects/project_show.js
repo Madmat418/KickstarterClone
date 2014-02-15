@@ -12,8 +12,9 @@ Kickstarter.Views.ProjectShow = Backbone.View.extend({
 	this.model.fetch();
     this.listenTo(this.collection, 'all', this.render);	    
 	this.listenTo(this.model, 'all', this.render);	
+	console.log(this.model);
 
-    this.model = options.model;	
+
   },
   
   events: {

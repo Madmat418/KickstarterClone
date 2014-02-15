@@ -6,7 +6,7 @@ Kickstarter.Views.CollectionItem = Backbone.View.extend({
   },
 
   initialize: function () {
-    this.percentage = (this.model.get('current_funding') / this.model.goal) * 100;
+    this.percentage = Math.round((this.model.get('current_funding') / this.model.goal) * 100);
   },
   render: function () {
     var content = this.template({ project: this.model, percentage: this.percentage });

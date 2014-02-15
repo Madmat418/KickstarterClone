@@ -8,12 +8,18 @@ Kickstarter.Routers.ProjectRouter = Backbone.Router.extend ( {
   },
 
   routes: {
-    '': 'index',
+    '': 'home',
+	'index': 'index',
     'projects/new': 'new',
     'projects/:id': 'show',
 	'users/:id': 'profile', 
     'categories/:category_id/projects': 'category',
 	'categories/0/projects/:id': 'show'
+  },
+  
+  home: function () {
+    var view = new Kickstarter.Views.Home();
+	this._swapView(view);
   },
   
   profile: function (id) {

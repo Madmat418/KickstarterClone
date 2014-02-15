@@ -34,4 +34,16 @@ Kickstarter::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  config.paperclip_defaults = {
+    :storage => :s3,
+	:url => ':s3_domain_url',
+	:path => ':class/:id.:style.:extension',
+	:s3_credentials => {
+	  :bucket => ENV['kickstartdevelopment'],
+	  :access_key_id => ENV['AKIAJI4YXA5KSXDB6QPA'],
+	  :secret_access_key => ENV['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'],
+	  :s3_host_name => 's3-us-west-2.amazonaws.com'
+	}
+  }
 end

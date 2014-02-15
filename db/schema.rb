@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124213547) do
+ActiveRecord::Schema.define(:version => 20140214212249) do
 
   create_table "categories", :force => true do |t|
     t.string   "category",   :null => false
@@ -22,14 +22,18 @@ ActiveRecord::Schema.define(:version => 20140124213547) do
   add_index "categories", ["category"], :name => "index_categories_on_category"
 
   create_table "projects", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "description", :null => false
-    t.integer  "owner_id",    :null => false
-    t.integer  "goal",        :null => false
-    t.datetime "end_time",    :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "name",               :null => false
+    t.string   "description",        :null => false
+    t.integer  "owner_id",           :null => false
+    t.integer  "goal",               :null => false
+    t.datetime "end_time",           :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "category_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "projects", ["end_time"], :name => "index_projects_on_end_time"

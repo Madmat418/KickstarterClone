@@ -1,3 +1,5 @@
+
+<div class='hero-unit'>
 <form id='project-form' class='hero-unit'>
   <h1>Create a project</h1>
   <lable for='title'>Project Title</lable>
@@ -20,23 +22,24 @@
   </ul>
   <lable for='description'>Description</lable>
   <textarea name='project[description]' id='description'></textarea><br>
+  
   <lable for='goal'>Your Support Goal</lable>
   <input type='text' name='project[goal]' id='goal'><br>
   <lable for='enddate'>When Will Your Support Drive End?</lable>
-  <html lang="en">
   <input type='datetime' id="datepicker" name='project[end_time]'></div>
   <script>
     $( "#datepicker" ).datepicker({dateFormat: "yy-mm-dd"});
   </script><br>
+  <div class='hero-unit'>
   <button class='btn btn-primary' data-toggle='modal' data-target='#myModal' id='reward-modal'>
     Add a Reward Level
   </button><br>
   <ul id='rewards'>
   </ul>
-
-
   <button id='create' class="btn btn-primary">Create Project</button>
+  </div>
 </form>
+
 
 
 
@@ -57,8 +60,19 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"id='submit'>Add this Reward Level</button>
+        <button type="button" class="btn btn-primary" id='submit'>Add this Reward Level</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+
+<script>
+  function handle_files(files) {
+    var file = files[0];
+	var reader = new FileReader();
+	reader.onload = function(e) {
+	  console.log(this.result);
+	}
+	reader.readAsDataURL(file);
+  }
+</script>
