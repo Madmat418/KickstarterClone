@@ -15,11 +15,8 @@
 
 class Project < ActiveRecord::Base
   attr_accessible :description, :goal, :name, :owner_id, :end_time, :rewards, :category_id, 
-                  :time_left, :status, :percentage, :time_left, :photo
-  has_attached_file :photo, :styles => {
-    :big => '600x600>',
-	:small => '50x50#'
-  }
+                  :time_left, :status, :percentage, :time_left
+
 
   validates :description, :goal, :name, :owner_id,
             :presence => true

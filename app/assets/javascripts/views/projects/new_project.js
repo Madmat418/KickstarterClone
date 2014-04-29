@@ -46,6 +46,7 @@ Kickstarter.Views.NewProject = Backbone.View.extend({
         that._navToShow(project);
       },
       error: function() {
+	    alert('Please login before attempting to create a project');
         console.log('error')
       }
     })
